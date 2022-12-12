@@ -6,7 +6,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
 def analyze_1(sent_1, sent_2, sent_3, pos_1, pos_2, pos_3):
-
+    # Analyze polysemy
     sent_1_tokens = tokenizer(sent_1, return_tensors='pt')['input_ids'].to(device)
     sent_2_tokens = tokenizer(sent_2, return_tensors='pt')['input_ids'].to(device)
     sent_3_tokens = tokenizer(sent_3, return_tensors='pt')['input_ids'].to(device)
@@ -31,6 +31,7 @@ def analyze_1(sent_1, sent_2, sent_3, pos_1, pos_2, pos_3):
 
 
 def analyze_2(sent_4, sent_5, sent_6):
+    # Analyze average of last hidden state values
     sent_4_tokens = tokenizer(sent_4, return_tensors='pt')['input_ids'].to(device)
     sent_5_tokens = tokenizer(sent_5, return_tensors='pt')['input_ids'].to(device)
     sent_6_tokens = tokenizer(sent_6, return_tensors='pt')['input_ids'].to(device)
@@ -53,6 +54,7 @@ def analyze_2(sent_4, sent_5, sent_6):
 
 
 def analyze_3(sent_4, sent_5, sent_6):
+    # Analyze CLS tokens 
     sent_4_tokens = tokenizer(sent_4, return_tensors='pt')['input_ids'].to(device)
     sent_5_tokens = tokenizer(sent_5, return_tensors='pt')['input_ids'].to(device)
     sent_6_tokens = tokenizer(sent_6, return_tensors='pt')['input_ids'].to(device)
@@ -82,7 +84,8 @@ sent_1 = 'A woman with a head of cabbage'
 sent_2 = 'The head of the woman'
 sent_3 = 'A head of cabbage'
 
-analyze_1(sent_1, sent_2, sent_3, pos_1=5, pos_2=2, pos_3=2)
+analyze_1(sent_1, sent_2, sent_3, pos_1=5, pos_2=2, pos_3=2) # pass in the positiion of word in each sentence
+analyze_1(sent_1, sent_2, sent_3, pos_1=5, pos_2=2, pos_3=2) # pass in the positiion of word in each sentence
 
 sent_4 = 'A fighter standing in fire'
 sent_5 = 'A firefighter standing in fire'
